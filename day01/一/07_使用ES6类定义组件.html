@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!-- react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel(用于将jsx转化为js,es6转为es5) -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    // 定义组件(用类定义)
+    class Demo extends React.Component{ // 必须继承React.Component的父类
+      // 定义一个最重要的生命周期钩子
+      render(){
+        console.log(this) // Demo的实例对象可以调用render
+        return <h1>我是类定义的组件，适用于复杂组件的定义</h1>
+      }
+    }
+    // 渲染虚拟DOM到页面
+      ReactDOM.render(VDOM,document.getElementById('test'))
+    </script>
+</body>
+</html>

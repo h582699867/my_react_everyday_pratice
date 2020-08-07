@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel(用于将jsx转化为js,es6转为es5) -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+      // 创建组件(函数式)
+      function Demo() {
+        console.log(this) // 此处this是undefined，经过babel编译之后开启严格模式
+        return <h1>我是函数定义的组件适用于简单组件的定义</h1>
+      }
+      // 渲染组件到页面
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+  </body>
+</html>

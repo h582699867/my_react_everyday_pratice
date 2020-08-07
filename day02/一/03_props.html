@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <div id="test4"></div>
+    <!-- react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel(用于将jsx转化为js,es6转为es5) -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入prop-types 限制标签属性 -->
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+      // 创建组件
+      class Person extends React.Component {
+        // 限制标签的属性类型，必要性
+        static propTypes = {
+          name: PropTypes.string.isRequired, // 必须为字符串和必要的
+          sex: PropTypes.string, // 必须为字符串
+          age: PropTypes.number // 必须为数字
+        }
+        // 设置默认值
+        static defaultProps = {
+          sex: '不男不女',
+          age: 18
+        }
+        render() {
+          const { name, sex, age } = this.props
+          return (
+            <div>
+              <ul>
+                <li>姓名：{name}</li>
+                <li>性别：{sex}</li>
+                <li>年龄：{age}</li>
+              </ul>
+              <hr/>
+            </div>
+          )
+        }
+      }
+      const p1 = {
+        name: '超哥',
+        sex: '男',
+        age: 20
+      }
+      /* 
+        渲染组件
+        react + babel 环境可以实现三点运算符展开对象，但仅仅适用于用于传递标签属性
+      */
+      // ReactDOM.render(<Person {...p1} />, document.getElementById('test1'))
+      ReactDOM.render(<Person name="峰哥" sex={19} sex="男" />, document.getElementById('test1'))
+      ReactDOM.render(<Person name="渊哥" sex={20} sex="男" />, document.getElementById('test2'))
+    </script>
+  </body>
+</html>

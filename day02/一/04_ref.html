@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel(用于将jsx转化为js,es6转为es5) -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+      // 定义组件
+      class Show extends React.Component {
+        demo = () => {
+          console.log(this.refs.userinput) // 获取真实DOM
+          console.log(this.refs)
+          alert(this.refs.userinput.value)
+        }
+        render() {
+          return (
+            <div>
+              <input ref="userinput" type="text" />
+              <br />
+              <button ref="btn" onClick={this.demo}>
+                点我显示内容
+              </button>
+            </div>
+          )
+        }
+      }
+      // 渲染组件
+      ReactDOM.render(<Show />, document.getElementById('test'))
+    </script>
+  </body>
+</html>

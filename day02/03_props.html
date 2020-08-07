@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel(用于将jsx转化为js,es6转为es5) -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+      class Person extends React.Component {
+        // props验证
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          age: PropTypes.number,
+          sex: PropTypes.string
+        }
+        // 设置默认值
+        static defaultProps = {
+          sex: '不男不女',
+          age: 18
+        }
+        render() {
+          const { name, age, sex } = this.props
+          return (
+            <div>
+              <ul>
+                <li>姓名：{name}</li>
+                <li>性别：{sex}</li>
+                <li>年龄：{age}</li>
+              </ul>
+            </div>
+          )
+        }
+      }
+      let obj = {
+        name: '超哥',
+        sex: '男',
+        age: 20
+      }
+      ReactDOM.render(<Person {...obj} />, document.getElementById('test'))
+    </script>
+  </body>
+</html>
